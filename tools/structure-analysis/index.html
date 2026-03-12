@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Анализ структуры текста онлайн — абзацы, заголовки, списки</title>
+  <meta name="description"
+        content="Бесплатный онлайн-анализ структуры текста. Оцените количество и длину абзацев, наличие заголовков и списков, чтобы сделать текст более понятным и удобным для чтения." />
+  <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/pages.css" />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="logo">TextTools</a>
+<nav class="main-nav">
+  <div class="nav-item nav-dropdown" data-dropdown>
+    <button class="nav-link nav-dropdown-toggle" type="button" data-dropdown-toggle>
+      Инструменты
+      <span class="nav-dropdown-arrow">▾</span>
+    </button>
+    <div class="nav-dropdown-menu" data-dropdown-menu>
+      <a href="/tools/count-words/" class="nav-dropdown-item">Подсчет символов и слов</a>
+      <a href="/tools/cleanup-format/" class="nav-dropdown-item">Очистка и форматирование текста</a>
+      <a href="/tools/compare-texts/" class="nav-dropdown-item">Сравнение двух текстов</a>
+      <a href="/tools/seo-analysis/" class="nav-dropdown-item">SEO-анализ текста</a>
+      <a href="/tools/readability/" class="nav-dropdown-item">Читабельность текста</a>
+      <a href="/tools/structure-analysis/" class="nav-dropdown-item">Анализ структуры текста</a>
+    </div>
+  </div>
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="site-main">
+    <div class="container">
+      <header class="tool-page-header mb-6">
+        <h1 class="tool-page-title">Анализ структуры текста онлайн</h1>
+        <p class="tool-page-subtitle">
+          Бесплатный онлайн-инструмент для анализа структуры текста. Помогает оценить количество
+          и длину абзацев, наличие заголовков и списков, чтобы сделать текст более понятным и
+          удобным для чтения.
+        </p>
+
+        <p class="small-text" style="margin-top: 8px;">
+          Вставьте текст статьи, лонгрида или описания — сервис покажет, насколько равномерно
+          распределены абзацы, есть ли заголовки и списки, нет ли слишком длинных фрагментов
+          «сплошного полотна». Это полезно авторам, редакторам и владельцам блогов.
+        </p>
+      </header>
+
+      <section class="tool-page">
+        <!-- Левая колонка: текст -->
+        <div class="tool-main">
+          <label for="structure-input" class="small-text" style="display:block; margin-bottom: 8px;">
+            Вставьте текст для анализа структуры:
+          </label>
+          <textarea
+            id="structure-input"
+            class="textarea"
+            placeholder="Вставьте сюда текст. Для лучшего анализа разделяйте абзацы пустой строкой."
+          ></textarea>
+
+          <div class="tool-main-actions mt-4" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <button id="structure-run" class="btn btn-primary" type="button">
+              Проанализировать структуру
+            </button>
+            <button id="structure-clear" class="btn btn-outline" type="button">
+              Очистить текст
+            </button>
+            <button id="structure-sample" class="btn btn-outline" type="button">
+              Вставить пример текста
+            </button>
+          </div>
+        </div>
+
+        <!-- Правая колонка: результаты и пояснения -->
+        <aside class="tool-side">
+          <section class="tool-results">
+            <h2 style="font-size: var(--text-lg); margin-bottom: 12px;">
+              Структура текста
+            </h2>
+
+            <div class="structure-summary small-text">
+              <div class="structure-row">
+                <span class="structure-label">Абзацев всего</span>
+                <span id="structure-paragraphs" class="structure-value">0</span>
+              </div>
+              <div class="structure-row">
+                <span class="structure-label">
+                  Средняя длина абзаца (слов)
+                  <span class="seo-hint-wrapper">
+                    <span class="seo-hint-icon">?</span>
+                    <span class="seo-tooltip">
+                      <strong>Средняя длина абзаца</strong><br />
+                      Показывает, сколько слов в среднем приходится на один абзац.
+                      <br /><br />
+                      <strong>Ориентировочная шкала:</strong><br />
+                      • до 80–120 слов — комфортный размер абзаца;<br />
+                      • 120–180 слов — длинные абзацы, возможны сложности с восприятием;<br />
+                      • более 180 слов — абзацы стоит разделить на несколько.
+                    </span>
+                  </span>
+                </span>
+                <span id="structure-avg-paragraph" class="structure-value">0</span>
+              </div>
+              <div class="structure-row">
+                <span class="structure-label">
+                  Доля длинных абзацев
+                  <span class="seo-hint-wrapper">
+                    <span class="seo-hint-icon">?</span>
+                    <span class="seo-tooltip">
+                      <strong>Доля длинных абзацев</strong><br />
+                      Показывает процент абзацев, которые превышают 150 слов.
+                      <br /><br />
+                      <strong>Ориентировочная шкала:</strong><br />
+                      • до 20% — структура текста комфортна;<br />
+                      • 20–40% — много длинных абзацев, возможна усталость читателя;<br />
+                      • более 40% — текст выглядит «сплошным полотном».
+                    </span>
+                  </span>
+                </span>
+                <span id="structure-long-paragraphs" class="structure-value">0%</span>
+              </div>
+              <div class="structure-row">
+                <span class="structure-label">Предполагаемых заголовков (строки в ВЕРХНЕМ регистре или короткие фразы)</span>
+                <span id="structure-headings" class="structure-value">0</span>
+              </div>
+              <div class="structure-row">
+                <span class="structure-label">Строк, похожих на списки (начинаются с -, •, * или цифры)</span>
+                <span id="structure-lists" class="structure-value">0</span>
+              </div>
+            </div>
+
+            <div id="structure-comment" class="small-text mt-4">
+              Вставьте текст и выполните анализ, чтобы получить рекомендации по его структуре.
+            </div>
+          </section>
+
+          <section class="tool-info card" style="padding: 16px;">
+            <h2 style="font-size: var(--text-base); margin-bottom: 8px;">
+              Зачем анализировать структуру текста
+            </h2>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Структурированный текст легче читать и просматривать. Абзацы, заголовки и списки помогают
+              быстро понять, о чём идёт речь, и найти нужные фрагменты. Если текст выглядит сплошным
+              блоком без разделения, читатель быстрее устаёт и может не дочитать материал до конца.
+            </p>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Этот инструмент помогает увидеть технические проблемы структуры: слишком длинные абзацы,
+              отсутствие заголовков и списков, неравномерное распределение текста. На основе этих данных
+              можно переработать материал и сделать его удобнее для восприятия.
+            </p>
+
+            <h3 style="font-size: var(--text-sm); margin: 12px 0 6px;">
+              На что обратить внимание
+            </h3>
+            <ul class="small-text" style="padding-left: 18px; list-style: disc; margin-bottom: 8px;">
+              <li>разбивайте длинные абзацы на логические части;</li>
+              <li>используйте подзаголовки для обозначения смысловых блоков;</li>
+              <li>оформляйте перечисления в виде списков, а не одного длинного предложения;</li>
+              <li>следите, чтобы текст не выглядел одним большим «полотном».</li>
+            </ul>
+
+            <p class="small-text">
+              Анализ структуры не оценивает качество содержания, но помогает сделать подачу информации
+              более удобной и понятной для читателя.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+      <!-- Дополнительный SEO-блок -->
+      <section class="mt-8">
+        <h2 style="font-size: var(--text-lg); margin-bottom: 8px;">
+          Как сделать структуру текста удобной для чтения
+        </h2>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Хорошо структурированный текст состоит из логических блоков, каждый из которых отвечает
+          на отдельный вопрос или раскрывает одну мысль. Важно не только содержание, но и подача:
+          длина абзацев, использование подзаголовков и списков.
+        </p>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Читатели часто «сканируют» страницу взглядом: обращают внимание на заголовки, выделения
+          и списки. Если текст не имеет выраженной структуры, найти нужную информацию сложнее,
+          и часть аудитории может просто закрыть страницу.
+        </p>
+        <p class="small-text">
+          Используйте анализ структуры текста онлайн, чтобы увидеть слабые места оформления и
+          улучшить подачу материала: добавить подзаголовки, разбить длинные абзацы и использовать
+          списки там, где это упростит восприятие.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p>© 2025 TextTools. Онлайн-инструменты для работы с текстом.</p>
+      <div>
+        <a href="/tools/">Инструменты</a> ·
+        <a href="/reference/">Справочник</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/tools/structure-analysis.js"></script>
+</body>
+</html>

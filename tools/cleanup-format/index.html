@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Очистка текста онлайн — удалить форматирование и HTML теги</title>
+  <meta name="description"
+        content="Бесплатный онлайн-инструмент для очистки текста: удаление HTML тегов, лишних пробелов и переносов строк. Приведите текст к чистому формату перед публикацией или вставкой на сайт." />
+  <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/pages.css" />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="logo">TextTools</a>
+      <nav class="main-nav">
+  <div class="nav-item nav-dropdown" data-dropdown>
+    <button class="nav-link nav-dropdown-toggle" type="button" data-dropdown-toggle>
+      Инструменты
+      <span class="nav-dropdown-arrow">▾</span>
+    </button>
+    <div class="nav-dropdown-menu" data-dropdown-menu>
+      <a href="/tools/count-words/" class="nav-dropdown-item">Подсчет символов и слов</a>
+      <a href="/tools/cleanup-format/" class="nav-dropdown-item">Очистка и форматирование текста</a>
+      <a href="/tools/compare-texts/" class="nav-dropdown-item">Сравнение двух текстов</a>
+      <a href="/tools/seo-analysis/" class="nav-dropdown-item">SEO-анализ текста</a>
+      <a href="/tools/readability/" class="nav-dropdown-item">Читабельность текста</a>
+      <a href="/tools/structure-analysis/" class="nav-dropdown-item">Анализ структуры текста</a>
+    </div>
+  </div>
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="site-main">
+    <div class="container">
+      <header class="tool-page-header mb-6">
+        <h1 class="tool-page-title">Очистка и форматирование текста онлайн</h1>
+        <p class="tool-page-subtitle">
+          Бесплатный онлайн-инструмент, который помогает быстро очистить текст от форматирования:
+          удалить HTML теги, лишние пробелы и лишние переносы строк. Приведите текст к аккуратному
+          и читаемому виду перед публикацией на сайте, в блоге или документе.
+        </p>
+
+        <p class="small-text" style="margin-top: 8px;">
+          Сервис особенно полезен, если вы копируете текст из Word, Google Docs или с веб-страницы:
+          вместе с содержимым часто переносятся невидимые стили, разрывы строк и пробелы.
+          Очистка текста онлайн позволяет избавиться от «мусора» и получить ровный, удобный для чтения текст.
+        </p>
+      </header>
+
+      <section class="tool-page">
+        <!-- Левая колонка: исходный текст и действия -->
+        <div class="tool-main">
+          <label for="cleanup-input" class="small-text" style="display:block; margin-bottom: 8px;">
+            Исходный текст для очистки:
+          </label>
+          <textarea
+            id="cleanup-input"
+            class="textarea"
+            placeholder="Вставьте сюда текст с форматированием, HTML тегами или лишними пробелами..."
+          ></textarea>
+
+          <div class="tool-main-actions mt-4" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <button id="cleanup-run" class="btn btn-primary" type="button">
+              Очистить текст
+            </button>
+            <button id="cleanup-clear" class="btn btn-outline" type="button">
+              Очистить поле
+            </button>
+            <button id="cleanup-sample" class="btn btn-outline" type="button">
+              Вставить пример текста
+            </button>
+          </div>
+
+          <div class="mt-4 small-text" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <label style="display:flex; align-items:center; gap:6px;">
+              <input type="checkbox" id="cleanup-option-html" checked />
+              <span>Удалять HTML теги</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:6px;">
+              <input type="checkbox" id="cleanup-option-spaces" checked />
+              <span>Убирать лишние пробелы</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:6px;">
+              <input type="checkbox" id="cleanup-option-empty-lines" checked />
+              <span>Удалять пустые строки</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Правая колонка: результат и пояснения -->
+        <aside class="tool-side">
+          <section class="tool-results">
+            <h2 style="font-size: var(--text-lg); margin-bottom: 12px;">
+              Очищенный текст
+            </h2>
+            <textarea
+              id="cleanup-output"
+              class="textarea"
+              placeholder="Здесь появится очищенный текст..."
+              readonly
+              style="min-height: 220px;"
+            ></textarea>
+
+            <div class="mt-4" style="display:flex; flex-wrap:wrap; gap:12px;">
+              <button id="cleanup-copy" class="btn btn-outline" type="button">
+                Скопировать результат
+              </button>
+            </div>
+          </section>
+
+          <section class="tool-info card" style="padding: 16px;">
+            <h2 style="font-size: var(--text-base); margin-bottom: 8px;">
+              Для чего нужна очистка текста от форматирования
+            </h2>
+            <p class="small-text" style="margin-bottom: 8px;">
+              При копировании текста из документов или с веб-страниц вместе с содержимым переносятся скрытые теги,
+              неразрывные пробелы и лишние переносы строк. Это мешает корректному отображению текста на сайте,
+              усложняет верстку и ухудшает читабельность.
+            </p>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Онлайн-очистка текста позволяет удалить HTML теги и привести отступы к единому виду.
+              В результате вы получаете чистый текст, который удобно вставлять в редактор, админку сайта
+              или почтовый сервис без лишнего форматирования.
+            </p>
+
+            <h3 style="font-size: var(--text-sm); margin: 12px 0 6px;">
+              Что именно делает сервис
+            </h3>
+            <ul class="small-text" style="padding-left: 18px; list-style: disc; margin-bottom: 8px;">
+              <li>удаляет HTML теги (&lt;p&gt;, &lt;span&gt;, &lt;div&gt; и другие);</li>
+              <li>заменяет несколько пробелов подряд на один;</li>
+              <li>удаляет пустые строки и лишние переносы;</li>
+              <li>оставляет только «чистый» текст без лишнего форматирования.</li>
+            </ul>
+
+            <p class="small-text">
+              При необходимости вы можете отключить некоторые опции очистки: например, оставить пустые строки
+              или не трогать HTML теги. Это удобно, если нужно лишь слегка поправить форматирование готового текста.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+      <!-- Дополнительный SEO-блок -->
+      <section class="mt-8">
+        <h2 style="font-size: var(--text-lg); margin-bottom: 8px;">
+          Как использовать онлайн-инструмент для очистки текста
+        </h2>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Чтобы очистить текст от форматирования, скопируйте его из исходного источника и вставьте в левое поле.
+          Отметьте нужные опции: удаление HTML тегов, лишних пробелов и пустых строк. Затем нажмите кнопку
+          «Очистить текст» — в правом поле появится результат. Его можно сразу скопировать и использовать в работе.
+        </p>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Такой подход позволяет быстро подготовить материалы для публикации на сайте, в блоге, рассылке
+          или внутреннем портале. Вам не нужно вручную искать и удалять теги или исправлять отступы —
+          сервис делает это автоматически.
+        </p>
+        <p class="small-text">
+          Онлайн-очистка текста экономит время редакторов и контент-менеджеров, уменьшает количество технических
+          ошибок и помогает поддерживать единый стиль оформления материалов на всех площадках.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p>© 2025 TextTools. Онлайн-инструменты для работы с текстом.</p>
+      <div>
+        <a href="/tools/">Инструменты</a> ·
+        <a href="/reference/">Справочник</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/tools/cleanup-format.js"></script>
+</body>
+</html>

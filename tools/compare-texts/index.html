@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Сравнение двух текстов онлайн — поиск отличий в тексте</title>
+  <meta name="description"
+        content="Бесплатный онлайн-инструмент для сравнения двух текстов. Найдите отличия между версиями документа, статьи или письма: добавленные, удаленные и измененные фрагменты." />
+  <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/pages.css" />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="logo">TextTools</a>
+      <nav class="main-nav">
+  <div class="nav-item nav-dropdown" data-dropdown>
+    <button class="nav-link nav-dropdown-toggle" type="button" data-dropdown-toggle>
+      Инструменты
+      <span class="nav-dropdown-arrow">▾</span>
+    </button>
+    <div class="nav-dropdown-menu" data-dropdown-menu>
+      <a href="/tools/count-words/" class="nav-dropdown-item">Подсчет символов и слов</a>
+      <a href="/tools/cleanup-format/" class="nav-dropdown-item">Очистка и форматирование текста</a>
+      <a href="/tools/compare-texts/" class="nav-dropdown-item">Сравнение двух текстов</a>
+      <a href="/tools/seo-analysis/" class="nav-dropdown-item">SEO-анализ текста</a>
+      <a href="/tools/readability/" class="nav-dropdown-item">Читабельность текста</a>
+      <a href="/tools/structure-analysis/" class="nav-dropdown-item">Анализ структуры текста</a>
+    </div>
+  </div>
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="site-main">
+    <div class="container">
+      <header class="tool-page-header mb-6">
+        <h1 class="tool-page-title">Сравнение двух текстов онлайн</h1>
+        <p class="tool-page-subtitle">
+          Бесплатный онлайн-инструмент для сравнения двух текстов. Помогает увидеть отличия
+          между версиями документа, статьи, письма или любого другого текста: какие фрагменты
+          были добавлены, удалены или изменены.
+        </p>
+
+        <p class="small-text" style="margin-top: 8px;">
+          Сервис удобен редакторам, авторам, студентам и всем, кто работает с правками текста.
+          Вы можете сравнить исходную и отредактированную версию материала, найти расхождения
+          в договоре, письме или техническом задании и быстро оценить, что именно изменилось.
+        </p>
+      </header>
+
+      <section class="tool-page tool-page--two-columns">
+        <!-- Левая колонка: два поля ввода и кнопка сравнения -->
+        <div class="tool-main">
+          <div class="small-text" style="display:flex; justify-content:space-between; gap:12px; margin-bottom: 8px;">
+            <span>Левый текст (оригинал):</span>
+            <span>Правый текст (измененная версия):</span>
+          </div>
+
+          <div class="compare-inputs">
+            <textarea
+              id="compare-left"
+              class="textarea"
+              placeholder="Вставьте сюда исходный текст..."
+            ></textarea>
+            <textarea
+              id="compare-right"
+              class="textarea"
+              placeholder="Вставьте сюда измененную версию текста..."
+            ></textarea>
+          </div>
+
+          <div class="tool-main-actions mt-4" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <button id="compare-run" class="btn btn-primary" type="button">
+              Сравнить тексты
+            </button>
+            <button id="compare-clear" class="btn btn-outline" type="button">
+              Очистить оба поля
+            </button>
+            <button id="compare-sample" class="btn btn-outline" type="button">
+              Вставить пример текстов
+            </button>
+          </div>
+
+          <div class="mt-4 small-text" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <label style="display:flex; align-items:center; gap:6px;">
+              <input type="radio" name="compare-mode" value="word" checked />
+              <span>Сравнение по словам</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:6px;">
+              <input type="radio" name="compare-mode" value="line" />
+              <span>Сравнение по строкам</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Правая колонка: результат и пояснения -->
+        <aside class="tool-side">
+          <section class="tool-results">
+            <h2 style="font-size: var(--text-lg); margin-bottom: 12px;">
+              Отличия между текстами
+            </h2>
+
+            <div class="compare-legend small-text" style="margin-bottom: 8px;">
+              <span class="legend-item legend-added">добавлено</span>
+              <span class="legend-item legend-removed">удалено</span>
+              <span class="legend-item legend-changed">изменено</span>
+            </div>
+
+            <div id="compare-result" class="compare-result">
+              <p class="small-text">
+                Введите два текста слева и нажмите «Сравнить тексты» — отличия появятся здесь.
+              </p>
+            </div>
+          </section>
+
+          <section class="tool-info card" style="padding: 16px;">
+            <h2 style="font-size: var(--text-base); margin-bottom: 8px;">
+              Как работает сравнение текстов
+            </h2>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Инструмент сравнения текстов анализирует две версии: исходную и измененную.
+              Он находит совпадающие фрагменты и подсвечивает различия: что было добавлено,
+              что удалено, а что изменено. Это позволяет быстро понять, какие именно правки
+              были внесены в текст.
+            </p>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Сравнение по словам удобно для работы с обычными текстами: статьями, письмами,
+              описаниями. Сравнение по строкам больше подходит для технических документов,
+              инструкций и файлов, в которых важна структура построчно.
+            </p>
+
+            <h3 style="font-size: var(--text-sm); margin: 12px 0 6px;">
+              Кому полезен онлайн-сервис сравнения текстов
+            </h3>
+            <ul class="small-text" style="padding-left: 18px; list-style: disc; margin-bottom: 8px;">
+              <li>редакторам и авторам — для проверки правок в статьях и новостях;</li>
+              <li>юристам — для поиска отличий между версиями договоров и соглашений;</li>
+              <li>менеджерам — для сравнения вариантов коммерческих предложений и писем;</li>
+              <li>студентам — для анализа изменений в рефератах и курсовых работах.</li>
+            </ul>
+
+            <p class="small-text">
+              Онлайн-сравнение текстов помогает экономить время и снижает риск пропустить важное изменение,
+              особенно при работе с объемными документами.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+      <!-- Дополнительный SEO-блок -->
+      <section class="mt-8">
+        <h2 style="font-size: var(--text-lg); margin-bottom: 8px;">
+          Зачем сравнивать тексты онлайн
+        </h2>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Когда над одним документом работает сразу несколько человек, легко потерять часть информации
+          или случайно изменить важный фрагмент. Онлайн-инструмент для сравнения двух текстов показывает,
+          какие именно изменения были внесены, и помогает избежать ошибок.
+        </p>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Сервис особенно полезен при согласовании договоров, технических заданий, инструкций и любой другой
+          документации, где важна точность формулировок. Вместо того чтобы читать текст целиком,
+          вы видите только отличающиеся участки и можете быстро принять решение.
+        </p>
+        <p class="small-text">
+          Используйте сравнение текстов онлайн каждый раз, когда нужно проконтролировать правки,
+          проверить корректность изменений или убедиться, что между версиями документа нет скрытых
+          расхождений.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p>© 2025 TextTools. Онлайн-инструменты для работы с текстом.</p>
+      <div>
+        <a href="/tools/">Инструменты</a> ·
+        <a href="/reference/">Справочник</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/tools/compare-texts.js"></script>
+</body>
+</html>

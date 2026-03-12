@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SEO-анализ текста онлайн — частота слов, заспамленность и «вода»</title>
+  <meta name="description"
+        content="Бесплатный SEO-анализ текста онлайн: частота слов и фраз, заспамленность (тошнота) и процент «воды». Помогает оптимизировать текст под поисковые системы без переспама." />
+  <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/pages.css" />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="logo">TextTools</a>
+      <nav class="main-nav">
+  <div class="nav-item nav-dropdown" data-dropdown>
+    <button class="nav-link nav-dropdown-toggle" type="button" data-dropdown-toggle>
+      Инструменты
+      <span class="nav-dropdown-arrow">▾</span>
+    </button>
+    <div class="nav-dropdown-menu" data-dropdown-menu>
+      <a href="/tools/count-words/" class="nav-dropdown-item">Подсчет символов и слов</a>
+      <a href="/tools/cleanup-format/" class="nav-dropdown-item">Очистка и форматирование текста</a>
+      <a href="/tools/compare-texts/" class="nav-dropdown-item">Сравнение двух текстов</a>
+      <a href="/tools/seo-analysis/" class="nav-dropdown-item">SEO-анализ текста</a>
+      <a href="/tools/readability/" class="nav-dropdown-item">Читабельность текста</a>
+      <a href="/tools/structure-analysis/" class="nav-dropdown-item">Анализ структуры текста</a>
+    </div>
+  </div>
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="site-main">
+    <div class="container">
+      <header class="tool-page-header mb-6">
+        <h1 class="tool-page-title">SEO-анализ текста онлайн</h1>
+        <p class="tool-page-subtitle">
+          Бесплатный онлайн-инструмент для SEO-анализа текста. Считает частоту слов и фраз,
+          показывает заспамленность текста (классическую и академическую тошноту), процент «воды»
+          и общую структуру текста. Помогает оптимизировать статьи под поисковые системы без переспама.
+        </p>
+
+        <p class="small-text" style="margin-top: 8px;">
+          Вставьте текст, который вы планируете разместить на сайте или в блоге, — сервис проанализирует
+          его и покажет, нет ли переизбытка ключевых слов, насколько текст «водянистый» и какие фразы
+          используются чаще всего. Это удобный инструмент для SEO-копирайтеров, редакторов и владельцев сайтов.
+        </p>
+      </header>
+
+      <section class="tool-page">
+        <!-- Левая колонка: текст и настройки -->
+        <div class="tool-main">
+          <label for="seo-input" class="small-text" style="display:block; margin-bottom: 8px;">
+            Вставьте текст для SEO-анализа:
+          </label>
+          <textarea
+            id="seo-input"
+            class="textarea"
+            placeholder="Вставьте сюда текст статьи, описания или любого другого материала для SEO-анализа..."
+          ></textarea>
+
+          <div class="tool-main-actions mt-4" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <button id="seo-run" class="btn btn-primary" type="button">
+              Выполнить SEO-анализ
+            </button>
+            <button id="seo-clear" class="btn btn-outline" type="button">
+              Очистить текст
+            </button>
+            <button id="seo-sample" class="btn btn-outline" type="button">
+              Вставить пример текста
+            </button>
+          </div>
+
+          <div class="mt-4 small-text" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <label style="display:flex; align-items:center; gap:6px;">
+              <input type="checkbox" id="seo-option-stopwords" checked />
+              <span>Исключать стоп-слова (предлоги, союзы и т.п.)</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:6px;">
+              <input type="checkbox" id="seo-option-lowercase" checked />
+              <span>Приводить слова к нижнему регистру</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Правая колонка: результаты и пояснения -->
+        <aside class="tool-side">
+          <section class="tool-results">
+            <h2 style="font-size: var(--text-lg); margin-bottom: 12px;">
+              Результаты SEO-анализа
+            </h2>
+
+<div class="seo-summary small-text">
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">Слов всего</span>
+    <span id="seo-total-words" class="seo-summary-value">0</span>
+  </div>
+
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">Уникальных слов</span>
+    <span id="seo-unique-words" class="seo-summary-value">0</span>
+  </div>
+
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">
+      Классическая заспамленность
+      <span class="seo-hint-wrapper">
+        <span class="seo-hint-icon">?</span>
+        <span class="seo-tooltip">
+          <strong>Классическая заспамленность</strong><br />
+          Показатель того, насколько часто в тексте повторяется самое частое слово.
+          Рассчитывается по классической формуле «тошноты» и отражает риск переспама
+          по одному ключевому слову.
+          <br /><br />
+          <strong>Ориентировочная шкала:</strong><br />
+          • до 3–4% — естественный уровень;<br />
+          • 4–7% — допустимо, но есть заметные повторы;<br />
+          • выше 7–8% — возможен переспам, стоит пересмотреть ключевые слова.
+        </span>
+      </span>
+    </span>
+    <span id="seo-classic-toshnota" class="seo-summary-value">0%</span>
+  </div>
+
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">
+      Академическая заспамленность
+      <span class="seo-hint-wrapper">
+        <span class="seo-hint-icon">?</span>
+        <span class="seo-tooltip">
+          <strong>Академическая заспамленность</strong><br />
+          Показатель общей заспамленности текста всеми словами.
+          Рассчитывается по академической формуле «тошноты» и помогает оценить,
+          насколько текст перегружен повторами в целом.
+          <br /><br />
+          <strong>Ориентировочная шкала:</strong><br />
+          • до 8–10% — комфортный уровень;<br />
+          • 10–15% — много повторов, но ещё допустимо;<br />
+          • выше 15–17% — текст может казаться перегруженным.
+        </span>
+      </span>
+    </span>
+    <span id="seo-academic-toshnota" class="seo-summary-value">0%</span>
+  </div>
+
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">«Вода» в тексте</span>
+    <span id="seo-water" class="seo-summary-value">0%</span>
+  </div>
+
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">
+      Средняя длина предложения
+      <span class="seo-hint-wrapper">
+        <span class="seo-hint-icon">?</span>
+        <span class="seo-tooltip">
+          <strong>Средняя длина предложения</strong><br />
+          Показывает, сколько слов в среднем приходится на одно предложение.
+          <br /><br />
+          <strong>Ориентировочная шкала:</strong><br />
+          • 8–15 слов — комфортный, легко читаемый текст;<br />
+          • 15–20 слов — средняя сложность;<br />
+          • более 20 слов — текст может восприниматься тяжёлым.
+        </span>
+      </span>
+    </span>
+    <span id="seo-avg-sent-len" class="seo-summary-value">0</span>
+  </div>
+
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">
+      Средняя длина слова
+      <span class="seo-hint-wrapper">
+        <span class="seo-hint-icon">?</span>
+        <span class="seo-tooltip">
+          <strong>Средняя длина слова</strong><br />
+          Показывает, сколько букв в среднем содержит одно слово.
+          <br /><br />
+          <strong>Ориентировочная шкала:</strong><br />
+          • 4–6 букв — простой, понятный язык;<br />
+          • 6–7 букв — умеренно сложный текст с терминами;<br />
+          • более 7 букв — много сложной и профессиональной лексики.
+        </span>
+      </span>
+    </span>
+    <span id="seo-avg-word-len" class="seo-summary-value">0</span>
+  </div>
+
+  <div class="seo-summary-row">
+    <span class="seo-summary-label">
+      Доля длинных предложений
+      <span class="seo-hint-wrapper">
+        <span class="seo-hint-icon">?</span>
+        <span class="seo-tooltip">
+          <strong>Доля длинных предложений</strong><br />
+          Показывает процент предложений, в которых больше 20 слов.
+          <br /><br />
+          <strong>Ориентировочная шкала:</strong><br />
+          • до 20% — текст воспринимается легко;<br />
+          • 20–40% — средняя сложность;<br />
+          • более 40% — текст может быть тяжёлым для восприятия.
+        </span>
+      </span>
+    </span>
+    <span id="seo-long-sent-share" class="seo-summary-value">0%</span>
+  </div>
+</div>
+
+            <h3 style="font-size: var(--text-sm); margin: 16px 0 8px;">
+              Часто используемые слова
+            </h3>
+            <div id="seo-top-words" class="seo-table small-text">
+              <p class="small-text">
+                После анализа здесь появится список слов с количеством повторений и долей в тексте.
+              </p>
+            </div>
+
+            <h3 style="font-size: var(--text-sm); margin: 16px 0 8px;">
+              Часто используемые фразы (2–3 слова)
+            </h3>
+            <div id="seo-top-phrases" class="seo-table small-text">
+              <p class="small-text">
+                После анализа здесь появится список фраз, которые чаще всего встречаются в тексте.
+              </p>
+            </div>
+          </section>
+
+          <section class="tool-info card" style="padding: 16px;">
+            <h2 style="font-size: var(--text-base); margin-bottom: 8px;">
+              Что показывает SEO-анализ текста
+            </h2>
+            <p class="small-text" style="margin-bottom: 8px;">
+              При SEO-анализе текста важно не только наличие ключевых слов, но и их распределение.
+              Переспам ухудшает читабельность и может негативно сказаться на ранжировании в поиске.
+              С помощью этого инструмента вы увидите, какие слова и фразы используются слишком часто.
+            </p>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Показатели заспамленности текста (классическая и академическая «тошнота») отражают,
+              насколько сильно материал перегружен повторяющимися ключевыми словами.
+              Классическая тошнота показывает частоту самого повторяющегося слова,
+              а академическая учитывает распределение всех слов и помогает оценить естественность текста.
+            </p>
+
+            <h3 style="font-size: var(--text-sm); margin: 12px 0 6px;">
+              Как использовать результаты анализа
+            </h3>
+            <ul class="small-text" style="padding-left: 18px; list-style: disc; margin-bottom: 8px;">
+              <li>найдите слова и фразы, которые встречаются слишком часто;</li>
+              <li>уберите лишние повторы или замените их синонимами;</li>
+              <li>проверьте, не слишком ли много «воды» и пустых фраз;</li>
+              <li>убедитесь, что текст читабелен и не выглядит переполненным ключевыми словами.</li>
+            </ul>
+
+            <p class="small-text">
+              Сбалансированный SEO-текст легче читать людям и безопаснее продвигать в поисковых системах.
+              Используйте анализ перед публикацией, чтобы улучшить качество материалов и избежать
+              заспамленности текста.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+      <!-- Дополнительный SEO-блок -->
+      <section class="mt-8">
+        <h2 style="font-size: var(--text-lg); margin-bottom: 8px;">
+          Зачем нужен SEO-анализ текста онлайн
+        </h2>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Поисковые системы учитывают не только наличие ключевых фраз, но и то, насколько естественно
+          они вписаны в текст. Слишком высокая заспамленность (тошнота) и большое количество «воды»
+          могут ухудшить позиции страницы в выдаче и снизить доверие читателей.
+        </p>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Онлайн-SEO-анализ текста позволяет быстро проверить материал перед публикацией:
+          если показатели выходят за разумные рамки, вы можете скорректировать формулировки,
+          перенести часть информации в другие блоки или переработать структуру статьи.
+        </p>
+        <p class="small-text">
+          Используйте этот инструмент как часть редакционной рутины: перед тем как отправить текст заказчику
+          или разместить его на сайте, убедитесь, что он достаточно информативен, не содержит переспама
+          и выглядит естественно как для людей, так и для поисковых систем.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p>© 2025 TextTools. Онлайн-инструменты для работы с текстом.</p>
+      <div>
+        <a href="/tools/">Инструменты</a> ·
+        <a href="/reference/">Справочник</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/tools/seo-analysis.js"></script>
+</body>
+</html>

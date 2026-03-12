@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Подсчет символов и слов онлайн — счетчик символов в тексте</title>
+  <meta name="description"
+        content="Бесплатный онлайн-счетчик символов и слов. Узнайте количество символов с пробелами и без, число слов и предложений, а также примерное время чтения текста. Удобный сервис для копирайтеров, редакторов и студентов." />
+  <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/pages.css" />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="logo">TextTools</a>
+      <nav class="main-nav">
+  <div class="nav-item nav-dropdown" data-dropdown>
+    <button class="nav-link nav-dropdown-toggle" type="button" data-dropdown-toggle>
+      Инструменты
+      <span class="nav-dropdown-arrow">▾</span>
+    </button>
+    <div class="nav-dropdown-menu" data-dropdown-menu>
+      <a href="/tools/count-words/" class="nav-dropdown-item">Подсчет символов и слов</a>
+      <a href="/tools/cleanup-format/" class="nav-dropdown-item">Очистка и форматирование текста</a>
+      <a href="/tools/compare-texts/" class="nav-dropdown-item">Сравнение двух текстов</a>
+      <a href="/tools/seo-analysis/" class="nav-dropdown-item">SEO-анализ текста</a>
+      <a href="/tools/readability/" class="nav-dropdown-item">Читабельность текста</a>
+      <a href="/tools/structure-analysis/" class="nav-dropdown-item">Анализ структуры текста</a>
+    </div>
+  </div>
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="site-main">
+    <div class="container">
+      <header class="tool-page-header mb-6">
+        <h1 class="tool-page-title">Подсчет символов и слов онлайн</h1>
+        <p class="tool-page-subtitle">
+          Бесплатный онлайн-счетчик символов и слов помогает быстро определить объем текста:
+          количество символов с пробелами и без, число слов и предложений, а также примерное время чтения.
+          Инструмент полезен копирайтерам, редакторам, студентам и всем, кто регулярно пишет тексты.
+        </p>
+
+        <p class="small-text" style="margin-top: 8px;">
+          Сервис подсчета символов особенно удобен, когда нужно уложиться в техническое задание:
+          написать текст на 2000 знаков, проверить лимит символов для заголовка или описания,
+          сравнить объем разных версий одного и того же материала. Вы можете в любой момент вставить
+          текст в счетчик символов и сразу увидеть, сколько знаков и слов он содержит.
+        </p>
+      </header>
+
+      <section class="tool-page">
+        <!-- Левая колонка: поле ввода и кнопки -->
+        <div class="tool-main">
+          <label for="count-words-input" class="small-text" style="display:block; margin-bottom: 8px;">
+            Вставьте или введите текст для подсчета:
+          </label>
+          <textarea
+            id="count-words-input"
+            class="textarea"
+            placeholder="Вставьте сюда текст, чтобы узнать количество символов, слов и предложений..."
+          ></textarea>
+
+          <div class="tool-main-actions mt-4" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <button id="count-words-clear" class="btn btn-outline" type="button">
+              Очистить текст
+            </button>
+            <button id="count-words-sample" class="btn btn-outline" type="button">
+              Вставить пример текста
+            </button>
+          </div>
+        </div>
+
+        <!-- Правая колонка: результаты и пояснения -->
+        <aside class="tool-side">
+          <section class="tool-results">
+            <h2 class="tool-results-title" style="font-size: var(--text-lg); margin-bottom: 12px;">
+              Результаты подсчета
+            </h2>
+
+            <dl class="count-stats">
+              <div class="count-stat-row">
+                <dt>Символов всего</dt>
+                <dd id="stat-characters-all">0</dd>
+              </div>
+
+              <div class="count-stat-row">
+                <dt>Символов без пробелов</dt>
+                <dd id="stat-characters-no-space">0</dd>
+              </div>
+
+              <div class="count-stat-row">
+                <dt>Слов</dt>
+                <dd id="stat-words">0</dd>
+              </div>
+
+              <div class="count-stat-row">
+                <dt>Предложений</dt>
+                <dd id="stat-sentences">0</dd>
+              </div>
+
+              <div class="count-stat-row">
+                <dt>Примерное время чтения</dt>
+                <dd id="stat-reading-time">0 сек.</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="tool-info card" style="padding: 16px;">
+            <h2 style="font-size: var(--text-base); margin-bottom: 8px;">
+              Онлайн-счетчик символов и слов: как пользоваться
+            </h2>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Вставьте текст в поле слева — сервис автоматически посчитает, сколько символов и слов он содержит.
+              Вы увидите количество символов с пробелами и без, число слов и предложений, а также ориентировочное время,
+              которое потребуется читателю, чтобы ознакомиться с текстом.
+            </p>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Такой подсчет помогает быстро оценить, соответствует ли текст требованиям заказчика, формату площадки
+              или внутренним стандартам компании. Например, можно проверить длину заголовков и описаний для SEO,
+              текстов для социальных сетей, писем и коммерческих предложений.
+            </p>
+
+            <h3 style="font-size: var(--text-sm); margin: 12px 0 6px;">
+              Какие показатели считает сервис
+            </h3>
+            <ul class="small-text" style="padding-left: 18px; list-style: disc; margin-bottom: 8px;">
+              <li>количество символов всего в тексте;</li>
+              <li>количество символов без пробелов;</li>
+              <li>количество слов и предложений;</li>
+              <li>примерное время чтения текста.</li>
+            </ul>
+
+            <p class="small-text">
+              Время чтения рассчитывается исходя из средней скорости 180–200 слов в минуту.
+              Это позволяет оценить, насколько текст объемный и комфортный для восприятия:
+              подойдет ли он для короткого объявления, заметки в блог или подробной статьи.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+     
+      
+        <p class="small-text" style="margin-bottom: 8px;">
+          Подсчет символов и слов помогает контролировать объем текста и соответствовать ограничениям,
+          которые задают поисковые системы, рекламные площадки и социальные сети. У заголовков и описаний
+          есть рекомендуемая длина, а посты в соцсетях часто ограничены по количеству символов. Если текст
+          слишком длинный, его могут обрезать, а важная часть сообщения не попадет к читателю.
+        </p>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Используя онлайн-счетчик символов и слов, вы можете быстро подготовить текст нужного размера,
+          избежать обрезания ключевых фраз и сделать контент более удобным для чтения и восприятия.
+          Инструмент позволяет сравнивать объем разных версий текста, оптимизировать статьи под SEO
+          и подгонять материалы под требования конкретных площадок.
+        </p>
+        <p class="small-text">
+          Достаточно один раз настроить привычку проверять количество символов в тексте перед публикацией,
+          и ваши материалы будут выглядеть аккуратнее, лучше вписываться в интерфейсы сайтов и приложений
+          и получать больше внимания от аудитории.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p>© 2025 TextTools. Онлайн-инструменты для работы с текстом.</p>
+      <div>
+        <a href="/tools/">Инструменты</a> ·
+        <a href="/reference/">Справочник</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/tools/count-words.js"></script>
+</body>
+</html>

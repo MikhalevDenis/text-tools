@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Читабельность текста онлайн — оценка сложности и удобства восприятия</title>
+  <meta name="description"
+        content="Бесплатный онлайн-инструмент для оценки читабельности текста. Определяет среднюю длину предложений и слов, долю длинных предложений и помогает понять, насколько текст прост или сложен для восприятия." />
+  <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/pages.css" />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="logo">TextTools</a>
+      <nav class="main-nav">
+  <div class="nav-item nav-dropdown" data-dropdown>
+    <button class="nav-link nav-dropdown-toggle" type="button" data-dropdown-toggle>
+      Инструменты
+      <span class="nav-dropdown-arrow">▾</span>
+    </button>
+    <div class="nav-dropdown-menu" data-dropdown-menu>
+      <a href="/tools/count-words/" class="nav-dropdown-item">Подсчет символов и слов</a>
+      <a href="/tools/cleanup-format/" class="nav-dropdown-item">Очистка и форматирование текста</a>
+      <a href="/tools/compare-texts/" class="nav-dropdown-item">Сравнение двух текстов</a>
+      <a href="/tools/seo-analysis/" class="nav-dropdown-item">SEO-анализ текста</a>
+      <a href="/tools/readability/" class="nav-dropdown-item">Читабельность текста</a>
+      <a href="/tools/structure-analysis/" class="nav-dropdown-item">Анализ структуры текста</a>
+    </div>
+  </div>
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="site-main">
+    <div class="container">
+      <header class="tool-page-header mb-6">
+        <h1 class="tool-page-title">Читабельность текста онлайн</h1>
+        <p class="tool-page-subtitle">
+          Бесплатный онлайн-инструмент для оценки читабельности текста. Определяет среднюю длину
+          предложений и слов, долю длинных предложений и помогает понять, насколько текст прост
+          или сложен для восприятия читателем.
+        </p>
+
+        <p class="small-text" style="margin-top: 8px;">
+          Вставьте текст статьи, письма или описания — сервис покажет, насколько он «тяжёлый»,
+          не перегружен ли длинными предложениями и сложными словами. Это полезно авторам,
+          редакторам, маркетологам и всем, кто хочет писать понятные и удобные для чтения тексты.
+        </p>
+      </header>
+
+      <section class="tool-page">
+        <!-- Левая колонка: текст -->
+        <div class="tool-main">
+          <label for="readability-input" class="small-text" style="display:block; margin-bottom: 8px;">
+            Вставьте текст для оценки читабельности:
+          </label>
+          <textarea
+            id="readability-input"
+            class="textarea"
+            placeholder="Вставьте сюда текст, чтобы оценить его читабельность..."
+          ></textarea>
+
+          <div class="tool-main-actions mt-4" style="display:flex; flex-wrap:wrap; gap:12px;">
+            <button id="readability-run" class="btn btn-primary" type="button">
+              Оценить читабельность
+            </button>
+            <button id="readability-clear" class="btn btn-outline" type="button">
+              Очистить текст
+            </button>
+            <button id="readability-sample" class="btn btn-outline" type="button">
+              Вставить пример текста
+            </button>
+          </div>
+        </div>
+
+        <!-- Правая колонка: результаты и пояснения -->
+        <aside class="tool-side">
+          <section class="tool-results">
+            <h2 style="font-size: var(--text-lg); margin-bottom: 12px;">
+              Основные показатели читабельности
+            </h2>
+
+            <div class="readability-summary small-text">
+              <div class="readability-row">
+                <span class="readability-label">Предложений всего</span>
+                <span id="readability-sentences" class="readability-value">0</span>
+              </div>
+              <div class="readability-row">
+                <span class="readability-label">Слов всего</span>
+                <span id="readability-words" class="readability-value">0</span>
+              </div>
+              <div class="readability-row">
+                <span class="readability-label">
+                  Средняя длина предложения
+                  <span class="seo-hint-wrapper">
+                    <span class="seo-hint-icon">?</span>
+                    <span class="seo-tooltip">
+                      <strong>Средняя длина предложения</strong><br />
+                      Показывает, сколько слов в среднем приходится на одно предложение.
+                      <br /><br />
+                      <strong>Ориентировочная шкала:</strong><br />
+                      • 8–15 слов — текст читается легко;<br />
+                      • 15–20 слов — средняя сложность;<br />
+                      • более 20 слов — текст может восприниматься тяжёлым.
+                    </span>
+                  </span>
+                </span>
+                <span id="readability-avg-sent" class="readability-value">0</span>
+              </div>
+              <div class="readability-row">
+                <span class="readability-label">
+                  Средняя длина слова
+                  <span class="seo-hint-wrapper">
+                    <span class="seo-hint-icon">?</span>
+                    <span class="seo-tooltip">
+                      <strong>Средняя длина слова</strong><br />
+                      Показывает, сколько букв в среднем содержит одно слово.
+                      <br /><br />
+                      <strong>Ориентировочная шкала:</strong><br />
+                      • 4–6 букв — простой, понятный язык;<br />
+                      • 6–7 букв — умеренно сложный текст с терминами;<br />
+                      • более 7 букв — много сложной и профессиональной лексики.
+                    </span>
+                  </span>
+                </span>
+                <span id="readability-avg-word" class="readability-value">0</span>
+              </div>
+              <div class="readability-row">
+                <span class="readability-label">
+                  Доля длинных предложений
+                  <span class="seo-hint-wrapper">
+                    <span class="seo-hint-icon">?</span>
+                    <span class="seo-tooltip">
+                      <strong>Доля длинных предложений</strong><br />
+                      Показывает процент предложений, в которых больше 20 слов.
+                      <br /><br />
+                      <strong>Ориентировочная шкала:</strong><br />
+                      • до 20% — текст воспринимается легко;<br />
+                      • 20–40% — средняя сложность;<br />
+                      • более 40% — текст может быть тяжёлым.
+                    </span>
+                  </span>
+                </span>
+                <span id="readability-long-share" class="readability-value">0%</span>
+              </div>
+            </div>
+
+            <div id="readability-comment" class="small-text mt-4">
+              Вставьте текст и выполните анализ, чтобы получить общую оценку его читабельности.
+            </div>
+          </section>
+
+          <section class="tool-info card" style="padding: 16px;">
+            <h2 style="font-size: var(--text-base); margin-bottom: 8px;">
+              Как улучшить читабельность текста
+            </h2>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Читабельный текст легко воспринимается с первого прочтения. В нём нет слишком длинных
+              предложений, сложных конструкций и нагромождений терминов. Чем проще структура,
+              тем легче читателю понять основную мысль и дочитать текст до конца.
+            </p>
+            <p class="small-text" style="margin-bottom: 8px;">
+              Обратите внимание на среднюю длину предложений и долю длинных предложений. Если большинство
+              фраз превышает 20 слов, попробуйте разбить их на более короткие — так текст станет
+              заметно легче для восприятия.
+            </p>
+
+            <h3 style="font-size: var(--text-sm); margin: 12px 0 6px;">
+              Практические рекомендации
+            </h3>
+            <ul class="small-text" style="padding-left: 18px; list-style: disc; margin-bottom: 8px;">
+              <li>разбивайте длинные предложения на два-три более коротких;</li>
+              <li>избегайте чрезмерного количества вводных конструкций и канцелярита;</li>
+              <li>по возможности заменяйте сложные слова более простыми аналогами;</li>
+              <li>используйте абзацы и подзаголовки, чтобы структурировать материал.</li>
+            </ul>
+
+            <p class="small-text">
+              Этот инструмент не оценивает содержательность текста, но помогает увидеть технические
+              аспекты читабельности и сделать текст проще и понятнее для аудитории.
+            </p>
+          </section>
+        </aside>
+      </section>
+
+      <!-- Дополнительный SEO-блок -->
+      <section class="mt-8">
+        <h2 style="font-size: var(--text-lg); margin-bottom: 8px;">
+          Зачем проверять читабельность текста онлайн
+        </h2>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Даже полезный и информативный текст может плохо работать, если его сложно читать.
+          Читатель устаёт от длинных предложений и сложных оборотов, теряет нить мысли
+          и закрывает страницу. Проверка читабельности помогает вовремя заметить такие проблемы.
+        </p>
+        <p class="small-text" style="margin-bottom: 8px;">
+          Оценка длины предложений и слов даёт представление о том, насколько текст подходит
+          для широкой аудитории. Для обучающих и профессиональных материалов допустима
+          более сложная структура, но для промо-текстов, писем и лендингов лучше стремиться
+          к простоте и ясности формулировок.
+        </p>
+        <p class="small-text">
+          Используйте проверку читабельности текста онлайн перед публикацией, чтобы сделать
+          материалы более понятными, удерживать внимание читателя и снижать риск того,
+          что важные мысли останутся незамеченными.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p>© 2025 TextTools. Онлайн-инструменты для работы с текстом.</p>
+      <div>
+        <a href="/tools/">Инструменты</a> ·
+        <a href="/reference/">Справочник</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/tools/readability.js"></script>
+</body>
+</html>
