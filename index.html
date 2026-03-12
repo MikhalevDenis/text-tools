@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: заголовок и описание главной -->
+  <title>Онлайн-сервис для работы с текстом — проверка орфографии, грамматики и SEO-анализ</title>
+  <meta name="description"
+        content="Бесплатный онлайн-сервис для работы с текстом: проверка орфографии и пунктуации, анализ грамматики и стиля, SEO-анализ, подсчет символов и слов, очистка и сравнение текстов." />
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+  <!-- ШАПКА САЙТА -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="logo">TextTools</a>
+      <nav class="main-nav">
+  <div class="nav-item nav-dropdown" data-dropdown>
+    <button class="nav-link nav-dropdown-toggle" type="button" data-dropdown-toggle>
+      Инструменты
+      <span class="nav-dropdown-arrow">▾</span>
+    </button>
+    <div class="nav-dropdown-menu" data-dropdown-menu>
+      <a href="/tools/count-words/" class="nav-dropdown-item">Подсчет символов и слов</a>
+      <a href="/tools/cleanup-format/" class="nav-dropdown-item">Очистка и форматирование текста</a>
+      <a href="/tools/compare-texts/" class="nav-dropdown-item">Сравнение двух текстов</a>
+      <a href="/tools/seo-analysis/" class="nav-dropdown-item">SEO-анализ текста</a>
+      <a href="/tools/readability/" class="nav-dropdown-item">Читабельность текста</a>
+      <a href="/tools/structure-analysis/" class="nav-dropdown-item">Анализ структуры текста</a>
+    </div>
+  </div>
+
+  <a href="/reference/" class="nav-link">Справочник</a>
+</nav>
+
+
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="site-main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <!-- Левая часть: заголовок, описание, кнопки -->
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Онлайн-сервис для быстрой проверки и улучшения текста
+          </h1>
+          <p class="hero-subtitle">
+            Проверяйте орфографию и пунктуацию, находите стилистические ошибки, анализируйте читабельность и SEO‑показатели текста в одном месте.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/tools/spell-check/" class="btn btn-primary">
+              Проверить орфографию
+            </a>
+            <a href="/tools/" class="btn btn-outline">
+              Все инструменты
+            </a>
+          </div>
+
+          <p class="small-text">
+            Сервис бесплатно помогает авторам, редакторам, копирайтерам, студентам и специалистам по контенту быстро приводить тексты в порядок.
+          </p>
+        </div>
+
+        <!-- Правая часть: демо-карточка/превью -->
+        <aside class="hero-card">
+          <p class="small-text mb-4">Пример анализа текста</p>
+          <div class="card" style="padding: 16px;">
+            <p class="small-text" style="margin-bottom: 8px; color: var(--color-text-muted);">
+              Вставьте текст — сервис подсветит ошибки и покажет ключевые показатели:
+            </p>
+            <ul style="font-size: var(--text-sm); color: var(--color-text-main); padding-left: 18px; list-style: disc;">
+              <li>орфографические и пунктуационные ошибки;</li>
+              <li>длину предложений и читабельность текста;</li>
+              <li>ключевые слова, плотность и «тошноту»;</li>
+              <li>количество символов и слов;</li>
+              <li>структуру: абзацы, заголовки, списки.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Плитки основных инструментов -->
+      <div class="container">
+        <section aria-labelledby="tools-section-title">
+          <h2 id="tools-section-title" class="mt-8">
+            Основные инструменты для работы с текстом
+          </h2>
+          <p class="small-text mt-4" style="max-width: 640px;">
+            Выберите нужный инструмент: от базовой проверки орфографии до детального SEO‑анализа и сравнения версий текста.
+          </p>
+
+          <div class="tools-grid">
+            <!-- 1. Оценка читабельности -->
+            <a href="/tools/readability/" class="tool-card-link">
+              <article class="tool-card">
+                <div>
+                  <h3 class="tool-card-title">Читабельность текста</h3>
+                  <p class="tool-card-desc">
+                    Считает индексы читабельности и длину предложений, помогает адаптировать текст под целевую аудиторию.
+                  </p>
+                </div>
+                <span class="tool-card-action">Открыть →</span>
+              </article>
+            </a>
+
+            <!-- 2. Анализ структуры текста -->
+            <a href="/tools/structure-analysis/" class="tool-card-link">
+              <article class="tool-card">
+                <div>
+                  <h3 class="tool-card-title">Структура текста</h3>
+                  <p class="tool-card-desc">
+                    Проверяет абзацы, заголовки и списки, подсказывает, где стоит улучшить структуру материала.
+                  </p>
+                </div>
+                <span class="tool-card-action">Открыть →</span>
+              </article>
+            </a>
+
+            <!-- 3. SEO-анализ текста -->
+            <a href="/tools/seo-analysis/" class="tool-card-link">
+              <article class="tool-card">
+                <div>
+                  <h3 class="tool-card-title">SEO‑анализ текста</h3>
+                  <p class="tool-card-desc">
+                    Анализирует ключевые слова, плотность, «тошноту» и процент «воды» для оптимизации текста под поиск.
+                  </p>
+                </div>
+                <span class="tool-card-action">Открыть →</span>
+              </article>
+            </a>
+
+            <!-- 4. Подсчет символов и слов -->
+            <a href="/tools/count-words/" class="tool-card-link">
+              <article class="tool-card">
+                <div>
+                  <h3 class="tool-card-title">Подсчет символов и слов</h3>
+                  <p class="tool-card-desc">
+                    Быстро считает количество символов, слов и предложений, оценивает примерное время чтения текста.
+                  </p>
+                </div>
+                <span class="tool-card-action">Открыть →</span>
+              </article>
+            </a>
+
+            <!-- 5. Очистка и форматирование текста -->
+            <a href="/tools/cleanup-format/" class="tool-card-link">
+              <article class="tool-card">
+                <div>
+                  <h3 class="tool-card-title">Очистка и форматирование</h3>
+                  <p class="tool-card-desc">
+                    Удаляет HTML‑теги, лишние пробелы и переносы строк, приводит текст к аккуратному и читабельному виду.
+                  </p>
+                </div>
+                <span class="tool-card-action">Открыть →</span>
+              </article>
+            </a>
+
+            <!-- 6. Сравнение двух текстов -->
+            <a href="/tools/compare-texts/" class="tool-card-link">
+              <article class="tool-card">
+                <div>
+                  <h3 class="tool-card-title">Сравнение двух текстов</h3>
+                  <p class="tool-card-desc">
+                    Показывает отличия между двумя версиями текста, подсвечивает добавления, удаления и изменения.
+                  </p>
+                </div>
+                <span class="tool-card-action">Открыть →</span>
+              </article>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p>© 2025 TextTools. Онлайн-инструменты для работы с текстом.</p>
+      <div>
+        <a href="/tools/">Инструменты</a> ·
+        <a href="/reference/">Справочник</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
